@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="citydelivery_gui" default="all">
+  
+  
+  <property file="Citydelivery_1.0.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/access-bridge-64.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module CityDelivery_gui -->
+  
+  <dirname property="module.citydelivery_gui.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.citydelivery_gui" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.citydelivery_gui" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.citydelivery_gui" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.citydelivery_gui" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="citydelivery_gui.output.dir" value="${module.citydelivery_gui.basedir}/out/production/CityDelivery_gui"/>
+  <property name="citydelivery_gui.testoutput.dir" value="${module.citydelivery_gui.basedir}/out/test/CityDelivery_gui"/>
+  
+  <path id="citydelivery_gui.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="citydelivery_gui.module.production.classpath">
+    <path refid="${module.jdk.classpath.citydelivery_gui}"/>
+  </path>
+  
+  <path id="citydelivery_gui.runtime.production.module.classpath">
+    <pathelement location="${citydelivery_gui.output.dir}"/>
+  </path>
+  
+  <path id="citydelivery_gui.module.classpath">
+    <path refid="${module.jdk.classpath.citydelivery_gui}"/>
+    <pathelement location="${citydelivery_gui.output.dir}"/>
+  </path>
+  
+  <path id="citydelivery_gui.runtime.module.classpath">
+    <pathelement location="${citydelivery_gui.testoutput.dir}"/>
+    <pathelement location="${citydelivery_gui.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.citydelivery_gui">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.citydelivery_gui">
+    <patternset refid="excluded.from.module.citydelivery_gui"/>
+  </patternset>
+  
+  <path id="citydelivery_gui.module.sourcepath">
+    <dirset dir="${module.citydelivery_gui.basedir}">
+      <include name="src"/>
+      <include name="images"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.citydelivery_gui" depends="compile.module.citydelivery_gui.production,compile.module.citydelivery_gui.tests" description="Compile module CityDelivery_gui"/>
+  
+  <target name="compile.module.citydelivery_gui.production" depends="register.custom.compilers" description="Compile module CityDelivery_gui; production classes">
+    <mkdir dir="${citydelivery_gui.output.dir}"/>
+    <javac2 destdir="${citydelivery_gui.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.citydelivery_gui}/javac">
+      <compilerarg line="${compiler.args.citydelivery_gui}"/>
+      <bootclasspath refid="citydelivery_gui.module.bootclasspath"/>
+      <classpath refid="citydelivery_gui.module.production.classpath"/>
+      <src refid="citydelivery_gui.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.citydelivery_gui"/>
+    </javac2>
+    
+    <copy todir="${citydelivery_gui.output.dir}">
+      <fileset dir="${module.citydelivery_gui.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.citydelivery_gui.basedir}/images">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.citydelivery_gui.tests" depends="register.custom.compilers,compile.module.citydelivery_gui.production" description="compile module CityDelivery_gui; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.citydelivery_gui" description="cleanup module">
+    <delete dir="${citydelivery_gui.output.dir}"/>
+    <delete dir="${citydelivery_gui.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.citydelivery_gui, clean.artifact.citydelivery_gui, clean.artifact.unnamed" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.citydelivery_gui" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.citydelivery_gui" value="${basedir}/out/artifacts/CityDelivery_gui"/>
+    <property name="artifact.output.unnamed" value="${basedir}/out/artifacts/unnamed"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="artifact.temp.output.CityDelivery_gui" value="${artifacts.temp.dir}/CityDelivery_gui.jar"/>
+    <taskdef resource="com/sun/javafx/tools/ant/antlib.xml" uri="javafx:com.sun.javafx.tools.ant" classpath="${jdk.home.1.8}/lib/ant-javafx.jar"/>
+  </target>
+  
+  <target name="clean.artifact.citydelivery_gui" description="clean CityDelivery_gui artifact output">
+    <delete dir="${artifact.output.citydelivery_gui}"/>
+  </target>
+  
+  <target name="clean.artifact.unnamed" description="clean unnamed artifact output">
+    <delete dir="${artifact.output.unnamed}"/>
+  </target>
+  
+  <target name="artifact.citydelivery_gui" depends="init.artifacts, compile.module.citydelivery_gui" description="Build &#39;CityDelivery_gui&#39; artifact" xmlns:fx="javafx:com.sun.javafx.tools.ant">
+    <mkdir dir="${artifact.output.citydelivery_gui}"/>
+    <copy todir="${artifact.temp.output.CityDelivery_gui}">
+      <fileset dir="${citydelivery_gui.output.dir}"/>
+    </copy>
+    <fx:fileset id="all_but_CityDelivery_gui" dir="${artifact.temp.output.CityDelivery_gui}" includes="**/*.jar">
+      <exclude name="CityDelivery_gui.jar"/>
+    </fx:fileset>
+    <fx:fileset id="all_CityDelivery_gui" dir="${artifact.temp.output.CityDelivery_gui}" includes="**/*.jar"/>
+    <fx:application id="CityDelivery_gui_id" name="CityDelivery_gui" mainClass="Main" version="1.0"/>
+    <fx:jar destfile="${artifact.temp.output.CityDelivery_gui}/CityDelivery_gui.jar">
+      <fx:application refid="CityDelivery_gui_id"/>
+      <fileset dir="${artifact.temp.output.CityDelivery_gui}" excludes="**/*.jar"/>
+      <fx:resources>
+        <fx:fileset refid="all_but_CityDelivery_gui"/>
+      </fx:resources>
+      <manifest>
+        <attribute name="Implementation-Title" value="CityDelivery_1.0"/>
+        <attribute name="Implementation-Version" value="1.0"/>
+        <attribute name="Implementation-Vendor" value=""/>
+      </manifest>
+    </fx:jar>
+    <fx:deploy width="600" height="400" updatemode="background" outdir="${artifact.temp.output.CityDelivery_gui}/deploy" outfile="CityDelivery_gui">
+      <fx:application refid="CityDelivery_gui_id"/>
+      <fx:info title="CityDelivery_1.0"/>
+      <fx:resources>
+        <fx:fileset refid="all_CityDelivery_gui"/>
+      </fx:resources>
+    </fx:deploy>
+    <copy todir="${artifact.output.citydelivery_gui}">
+      <fileset dir="${artifact.temp.output.CityDelivery_gui}/deploy"/>
+    </copy>
+    <delete includeemptydirs="true">
+      <fileset dir="${artifact.temp.output.CityDelivery_gui}"/>
+    </delete>
+  </target>
+  
+  <target name="artifact.unnamed" depends="init.artifacts" description="Build &#39;unnamed&#39; artifact">
+    <mkdir dir="${artifact.output.unnamed}"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.citydelivery_gui, artifact.unnamed" description="Build all artifacts">
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

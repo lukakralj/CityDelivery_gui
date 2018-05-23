@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="CityDelivery_gui">
+    <output-path>$PROJECT_DIR$/out/artifacts/CityDelivery_gui</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="Main" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="CityDelivery_1.0" />
+        <option name="vendor" value="" />
+        <option name="version" value="1.0" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="CityDelivery_gui.jar">
+        <element id="module-output" name="CityDelivery_gui" />
+      </element>
+    </root>
+  </artifact>
+</component>
